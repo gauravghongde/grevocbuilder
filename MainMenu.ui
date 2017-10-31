@@ -1,0 +1,367 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<ui version="4.0">
+ <class>MainMenuWindow</class>
+ <widget class="QWidget" name="MainMenuWindow">
+  <property name="geometry">
+   <rect>
+    <x>0</x>
+    <y>0</y>
+    <width>640</width>
+    <height>480</height>
+   </rect>
+  </property>
+  <property name="minimumSize">
+   <size>
+    <width>640</width>
+    <height>480</height>
+   </size>
+  </property>
+  <property name="maximumSize">
+   <size>
+    <width>640</width>
+    <height>480</height>
+   </size>
+  </property>
+  <property name="font">
+   <font>
+    <family>Ubuntu Condensed</family>
+    <pointsize>14</pointsize>
+   </font>
+  </property>
+  <property name="windowTitle">
+   <string>GRE Vocab Builder</string>
+  </property>
+  <property name="styleSheet">
+   <string notr="true">background-color: rgb(255, 255, 255);</string>
+  </property>
+  <widget class="QPushButton" name="butfcards">
+   <property name="geometry">
+    <rect>
+     <x>260</x>
+     <y>189</y>
+     <width>131</width>
+     <height>30</height>
+    </rect>
+   </property>
+   <property name="font">
+    <font>
+     <family>Ubuntu Condensed</family>
+     <pointsize>14</pointsize>
+     <weight>50</weight>
+     <bold>false</bold>
+    </font>
+   </property>
+   <property name="cursor">
+    <cursorShape>PointingHandCursor</cursorShape>
+   </property>
+   <property name="focusPolicy">
+    <enum>Qt::NoFocus</enum>
+   </property>
+   <property name="styleSheet">
+    <string notr="true">background-color: rgba(255, 255, 255, 0);
+color: rgb(255, 255, 255);</string>
+   </property>
+   <property name="text">
+    <string>    FlashCards</string>
+   </property>
+   <property name="icon">
+    <iconset>
+     <normaloff>../PROJtemp/flashcadsicon.png</normaloff>../PROJtemp/flashcadsicon.png</iconset>
+   </property>
+   <property name="iconSize">
+    <size>
+     <width>20</width>
+     <height>20</height>
+    </size>
+   </property>
+  </widget>
+  <widget class="QLabel" name="header">
+   <property name="geometry">
+    <rect>
+     <x>10</x>
+     <y>10</y>
+     <width>621</width>
+     <height>131</height>
+    </rect>
+   </property>
+   <property name="font">
+    <font>
+     <family>Ubuntu Condensed</family>
+     <pointsize>20</pointsize>
+     <weight>75</weight>
+     <bold>true</bold>
+    </font>
+   </property>
+   <property name="styleSheet">
+    <string notr="true">background-color: rgba(212, 36, 60, 200);
+color: rgb(255, 255, 255);</string>
+   </property>
+   <property name="text">
+    <string>GRE VOCABULARY BUILDER </string>
+   </property>
+   <property name="scaledContents">
+    <bool>true</bool>
+   </property>
+   <property name="alignment">
+    <set>Qt::AlignCenter</set>
+   </property>
+  </widget>
+  <widget class="QLabel" name="labfcards">
+   <property name="geometry">
+    <rect>
+     <x>253</x>
+     <y>184</y>
+     <width>141</width>
+     <height>40</height>
+    </rect>
+   </property>
+   <property name="styleSheet">
+    <string notr="true">background-color: rgb(227, 100, 59);</string>
+   </property>
+   <property name="text">
+    <string/>
+   </property>
+  </widget>
+  <widget class="QPushButton" name="butquiz">
+   <property name="geometry">
+    <rect>
+     <x>267</x>
+     <y>240</y>
+     <width>121</width>
+     <height>29</height>
+    </rect>
+   </property>
+   <property name="font">
+    <font>
+     <family>Ubuntu Condensed</family>
+     <pointsize>14</pointsize>
+     <weight>50</weight>
+     <bold>false</bold>
+    </font>
+   </property>
+   <property name="cursor">
+    <cursorShape>PointingHandCursor</cursorShape>
+   </property>
+   <property name="focusPolicy">
+    <enum>Qt::NoFocus</enum>
+   </property>
+   <property name="styleSheet">
+    <string notr="true">background-color: rgba(255, 255, 255, 0);
+color: rgb(255, 255, 255);</string>
+   </property>
+   <property name="text">
+    <string>   Take a Quiz</string>
+   </property>
+   <property name="icon">
+    <iconset>
+     <normaloff>../PROJtemp/quizicon.png</normaloff>../PROJtemp/quizicon.png</iconset>
+   </property>
+   <property name="iconSize">
+    <size>
+     <width>20</width>
+     <height>20</height>
+    </size>
+   </property>
+  </widget>
+  <widget class="QLabel" name="labquiz">
+   <property name="geometry">
+    <rect>
+     <x>253</x>
+     <y>234</y>
+     <width>141</width>
+     <height>40</height>
+    </rect>
+   </property>
+   <property name="styleSheet">
+    <string notr="true">background-color: rgb(227, 100, 59);</string>
+   </property>
+   <property name="text">
+    <string/>
+   </property>
+  </widget>
+  <widget class="QPushButton" name="butwordlst">
+   <property name="geometry">
+    <rect>
+     <x>257</x>
+     <y>289</y>
+     <width>130</width>
+     <height>30</height>
+    </rect>
+   </property>
+   <property name="font">
+    <font>
+     <family>Ubuntu Condensed</family>
+     <pointsize>14</pointsize>
+     <weight>50</weight>
+     <bold>false</bold>
+    </font>
+   </property>
+   <property name="cursor">
+    <cursorShape>PointingHandCursor</cursorShape>
+   </property>
+   <property name="focusPolicy">
+    <enum>Qt::NoFocus</enum>
+   </property>
+   <property name="styleSheet">
+    <string notr="true">background-color: rgba(255, 255, 255, 0);
+color: rgb(255, 255, 255);</string>
+   </property>
+   <property name="text">
+    <string>    WordList</string>
+   </property>
+   <property name="icon">
+    <iconset>
+     <normaloff>../PROJtemp/listicon.png</normaloff>../PROJtemp/listicon.png</iconset>
+   </property>
+   <property name="iconSize">
+    <size>
+     <width>20</width>
+     <height>20</height>
+    </size>
+   </property>
+  </widget>
+  <widget class="QLabel" name="labwlist">
+   <property name="geometry">
+    <rect>
+     <x>253</x>
+     <y>284</y>
+     <width>141</width>
+     <height>40</height>
+    </rect>
+   </property>
+   <property name="styleSheet">
+    <string notr="true">background-color: rgb(227, 100, 59);</string>
+   </property>
+   <property name="text">
+    <string/>
+   </property>
+  </widget>
+  <widget class="QLabel" name="labfav">
+   <property name="geometry">
+    <rect>
+     <x>253</x>
+     <y>335</y>
+     <width>141</width>
+     <height>40</height>
+    </rect>
+   </property>
+   <property name="styleSheet">
+    <string notr="true">background-color: rgb(227, 100, 59);</string>
+   </property>
+   <property name="text">
+    <string/>
+   </property>
+  </widget>
+  <widget class="QPushButton" name="butfav">
+   <property name="geometry">
+    <rect>
+     <x>257</x>
+     <y>340</y>
+     <width>131</width>
+     <height>30</height>
+    </rect>
+   </property>
+   <property name="font">
+    <font>
+     <family>Ubuntu Condensed</family>
+     <pointsize>14</pointsize>
+     <weight>50</weight>
+     <bold>false</bold>
+    </font>
+   </property>
+   <property name="cursor">
+    <cursorShape>PointingHandCursor</cursorShape>
+   </property>
+   <property name="focusPolicy">
+    <enum>Qt::NoFocus</enum>
+   </property>
+   <property name="styleSheet">
+    <string notr="true">background-color: rgba(255, 255, 255, 0);
+color: rgb(255, 255, 255);</string>
+   </property>
+   <property name="text">
+    <string>    Favorites</string>
+   </property>
+   <property name="icon">
+    <iconset>
+     <normaloff>../PROJtemp/favoriteicon.png</normaloff>../PROJtemp/favoriteicon.png</iconset>
+   </property>
+   <property name="iconSize">
+    <size>
+     <width>20</width>
+     <height>20</height>
+    </size>
+   </property>
+  </widget>
+  <widget class="QPushButton" name="butstats">
+   <property name="geometry">
+    <rect>
+     <x>258</x>
+     <y>390</y>
+     <width>131</width>
+     <height>30</height>
+    </rect>
+   </property>
+   <property name="font">
+    <font>
+     <family>Ubuntu Condensed</family>
+     <pointsize>14</pointsize>
+     <weight>50</weight>
+     <bold>false</bold>
+    </font>
+   </property>
+   <property name="cursor">
+    <cursorShape>PointingHandCursor</cursorShape>
+   </property>
+   <property name="focusPolicy">
+    <enum>Qt::NoFocus</enum>
+   </property>
+   <property name="styleSheet">
+    <string notr="true">background-color: rgba(255, 255, 255, 0);
+color: rgb(255, 255, 255);</string>
+   </property>
+   <property name="text">
+    <string>    Statistics</string>
+   </property>
+   <property name="icon">
+    <iconset>
+     <normaloff>../PROJtemp/statsicon.png</normaloff>../PROJtemp/statsicon.png</iconset>
+   </property>
+   <property name="iconSize">
+    <size>
+     <width>20</width>
+     <height>20</height>
+    </size>
+   </property>
+  </widget>
+  <widget class="QLabel" name="labstats">
+   <property name="geometry">
+    <rect>
+     <x>254</x>
+     <y>385</y>
+     <width>141</width>
+     <height>40</height>
+    </rect>
+   </property>
+   <property name="styleSheet">
+    <string notr="true">background-color: rgb(227, 100, 59);</string>
+   </property>
+   <property name="text">
+    <string/>
+   </property>
+  </widget>
+  <zorder>labstats</zorder>
+  <zorder>labfcards</zorder>
+  <zorder>header</zorder>
+  <zorder>labquiz</zorder>
+  <zorder>labwlist</zorder>
+  <zorder>labfav</zorder>
+  <zorder>butfcards</zorder>
+  <zorder>butquiz</zorder>
+  <zorder>butwordlst</zorder>
+  <zorder>butstats</zorder>
+  <zorder>butfav</zorder>
+ </widget>
+ <resources/>
+ <connections/>
+</ui>

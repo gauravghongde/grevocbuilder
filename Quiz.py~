@@ -1,0 +1,268 @@
+# -*- coding: utf-8 -*-
+
+# Form implementation generated from reading ui file 'Quiz.ui'
+#
+# Created: Sat Oct 14 16:14:55 2017
+#      by: PyQt4 UI code generator 4.10.4
+#
+# WARNING! All changes made in this file will be lost!
+
+from PyQt4 import QtCore, QtGui
+import sqlite3
+import random
+import matplotlib.pyplot as plt
+
+conn = sqlite3.connect("gre.db")
+
+try:
+    _fromUtf8 = QtCore.QString.fromUtf8
+except AttributeError:
+    def _fromUtf8(s):
+        return s
+
+try:
+    _encoding = QtGui.QApplication.UnicodeUTF8
+    def _translate(context, text, disambig):
+        return QtGui.QApplication.translate(context, text, disambig, _encoding)
+except AttributeError:
+    def _translate(context, text, disambig):
+        return QtGui.QApplication.translate(context, text, disambig)
+
+class Ui_QuizWindow(object):
+
+    options = []
+    counter = 0
+    flag = []
+    randWord = ""
+    crctans = ""
+    
+######################################################################
+    
+    def disp(self):
+    
+        self.options[:] = []
+        randno= random.randrange(1,231)
+        cur = conn.cursor()
+        
+        cur.execute("select bwords from allwords where bid = "+str(randno)+";")
+        self.randWord = cur.fetchone()[0]
+        
+        cur.execute("select bmeanings from allwords where bid = "+str(randno)+";")
+        self.crctans = cur.fetchone()[0]
+        #self.crctans = self.crctans.encode('utf-8')
+        self.options.append(self.crctans)   #indicator1
+        
+        count = 1
+        for i in range(10):
+            if count!=4:
+                randno= random.randrange(1,231)
+                cur.execute("select bmeanings from allwords where bid = "+str(randno)+";")
+                option = cur.fetchone()[0]
+                if option not in self.options:
+                    self.options.append(option)
+                    count = count +1
+            else:
+                break
+                
+        random.shuffle(self.options)
+        #print (self.options)
+        
+                #crrOp = options.index(crctans)
+        
+####################################################################
+
+        self.labword.setText(_translate("QuizWindow", str(str(self.counter+1)+". "+self.randWord), None))
+        self.rbutopA.setText(_translate("QuizWindow", self.options[0], None))
+        self.rbutopB.setText(_translate("QuizWindow", self.options[1], None))
+        self.rbutopC.setText(_translate("QuizWindow", self.options[2], None))
+        self.rbutopD.setText(_translate("QuizWindow", self.options[3], None))
+        self.counter = self.counter+1
+
+    def setupUi(self, QuizWindow, MainMenuWindow):
+
+        self.mw = MainMenuWindow
+        self.form = QuizWindow
+        self.flag[:] = []
+
+        QuizWindow.setObjectName(_fromUtf8("QuizWindow"))
+        QuizWindow.resize(640, 480)
+        font = QtGui.QFont()
+        font.setFamily(_fromUtf8("Ubuntu Condensed"))
+        font.setPointSize(14)
+        QuizWindow.setFont(font)
+        QuizWindow.setStyleSheet(_fromUtf8("background-color: rgb(255, 255, 255);\n"
+"color: rgb(0, 0, 0);"))
+        self.mainmenu_btn = QtGui.QPushButton(QuizWindow)
+        self.mainmenu_btn.setGeometry(QtCore.QRect(20, 22, 51, 51))
+        self.mainmenu_btn.setCursor(QtGui.QCursor(QtCore.Qt.PointingHandCursor))
+        self.mainmenu_btn.setStyleSheet(_fromUtf8("background-color: rgba(255, 255, 255, 0);"))
+        self.mainmenu_btn.setText(_fromUtf8(""))
+        icon = QtGui.QIcon()
+        icon.addPixmap(QtGui.QPixmap(_fromUtf8("menu.png")), QtGui.QIcon.Normal, QtGui.QIcon.Off)
+        self.mainmenu_btn.setIcon(icon)
+        self.mainmenu_btn.setIconSize(QtCore.QSize(25, 25))
+        self.mainmenu_btn.setFlat(False)
+        self.mainmenu_btn.setObjectName(_fromUtf8("mainmenu_btn"))
+        self.labheader = QtGui.QLabel(QuizWindow)
+        self.labheader.setGeometry(QtCore.QRect(20, 22, 601, 51))
+        font = QtGui.QFont()
+        font.setFamily(_fromUtf8("Ubuntu Condensed"))
+        font.setPointSize(14)
+        font.setBold(True)
+        font.setWeight(75)
+        self.labheader.setFont(font)
+        self.labheader.setStyleSheet(_fromUtf8("background-color: rgb(206, 36, 57);\n"
+"color: rgb(255, 255, 255);"))
+        self.labheader.setAlignment(QtCore.Qt.AlignCenter)
+        self.labheader.setObjectName(_fromUtf8("labheader"))
+        self.labword = QtGui.QLabel(QuizWindow)
+        self.labword.setGeometry(QtCore.QRect(270, 122, 99, 39))
+        font = QtGui.QFont()
+        font.setFamily(_fromUtf8("Ubuntu Condensed"))
+        font.setPointSize(24)
+        font.setBold(True)
+        font.setWeight(75)
+        self.labword.setFont(font)
+        self.labword.setLineWidth(0)
+        self.labword.setAlignment(QtCore.Qt.AlignCenter)
+        self.labword.setWordWrap(True)
+        self.labword.setObjectName(_fromUtf8("labword"))
+        self.rbutopD = QtGui.QRadioButton(QuizWindow)
+        self.rbutopD.setGeometry(QtCore.QRect(271, 291, 99, 22))
+        self.rbutopD.setCursor(QtGui.QCursor(QtCore.Qt.PointingHandCursor))
+        self.rbutopD.setStyleSheet(_fromUtf8("font: 14pt \"Ubuntu Condensed\";"))
+        self.rbutopD.setObjectName(_fromUtf8("rbutopD"))
+        self.rbutopC = QtGui.QRadioButton(QuizWindow)
+        self.rbutopC.setGeometry(QtCore.QRect(271, 263, 99, 22))
+        self.rbutopC.setCursor(QtGui.QCursor(QtCore.Qt.PointingHandCursor))
+        self.rbutopC.setStyleSheet(_fromUtf8("font: 14pt \"Ubuntu Condensed\";"))
+        self.rbutopC.setObjectName(_fromUtf8("rbutopC"))
+        self.rbutopB = QtGui.QRadioButton(QuizWindow)
+        self.rbutopB.setGeometry(QtCore.QRect(271, 235, 99, 22))
+        self.rbutopB.setCursor(QtGui.QCursor(QtCore.Qt.PointingHandCursor))
+        self.rbutopB.setStyleSheet(_fromUtf8("font: 14pt \"Ubuntu Condensed\";"))
+        self.rbutopB.setObjectName(_fromUtf8("rbutopB"))
+        self.rbutopA = QtGui.QRadioButton(QuizWindow)
+        self.rbutopA.setGeometry(QtCore.QRect(271, 207, 99, 22))
+        self.rbutopA.setCursor(QtGui.QCursor(QtCore.Qt.PointingHandCursor))
+        self.rbutopA.setStyleSheet(_fromUtf8("font: 14pt \"Ubuntu Condensed\";"))
+        self.rbutopA.setCheckable(True)
+        self.rbutopA.setChecked(False)
+        self.rbutopA.setObjectName(_fromUtf8("rbutopA"))
+        self.bookmark_cb = QtGui.QCheckBox(QuizWindow)
+        self.bookmark_cb.setGeometry(QtCore.QRect(380, 405, 99, 22))
+        self.bookmark_cb.setCursor(QtGui.QCursor(QtCore.Qt.PointingHandCursor))
+        self.bookmark_cb.setStyleSheet(_fromUtf8("font: 14pt \"Ubuntu Condensed\";"))
+        self.bookmark_cb.setObjectName(_fromUtf8("bookmark_cb"))
+        self.labnext = QtGui.QLabel(QuizWindow)
+        self.labnext.setGeometry(QtCore.QRect(493, 401, 101, 31))
+        font = QtGui.QFont()
+        font.setFamily(_fromUtf8("Ubuntu Condensed"))
+        font.setPointSize(14)
+        font.setBold(True)
+        font.setWeight(75)
+        self.labnext.setFont(font)
+        self.labnext.setStyleSheet(_fromUtf8("background-color: rgb(206, 36, 57);\n"
+"color: rgb(255, 255, 255);"))
+        self.labnext.setText(_fromUtf8(""))
+        self.labnext.setAlignment(QtCore.Qt.AlignCenter)
+        self.labnext.setObjectName(_fromUtf8("labnext"))
+        self.btn_next = QtGui.QPushButton(QuizWindow)
+        self.btn_next.setGeometry(QtCore.QRect(493, 402, 99, 31))
+        font = QtGui.QFont()
+        font.setFamily(_fromUtf8("Ubuntu Condensed"))
+        font.setPointSize(14)
+        self.btn_next.setFont(font)
+        self.btn_next.setCursor(QtGui.QCursor(QtCore.Qt.PointingHandCursor))
+        self.btn_next.setStyleSheet(_fromUtf8("background-color: rgba(255, 255, 255, 0);\n"
+"color: rgb(255, 255, 255);"))
+        self.btn_next.setObjectName(_fromUtf8("btn_next"))
+        
+        self.btn_next.clicked.connect(self.nextbtnckd)
+        self.mainmenu_btn.clicked.connect(self.btnMMClicked)
+        self.disp()
+
+        self.retranslateUi(QuizWindow)
+        QtCore.QMetaObject.connectSlotsByName(QuizWindow)
+
+    def nextbtnckd(self):
+        #print(self.options)
+        if self.btn_next.text() == "SUBMIT":
+
+            if self.rbutopA.isChecked()==True:
+                if self.crctans==self.options[0]:
+                    self.flag.insert(self.counter-1,'Correct')
+                    #self.A_indicator.setPixmap(QtGui.QPixmap("crr.png"))
+                else:
+                    self.flag.insert(self.counter-1,'Wrong')
+                    self.A_indicator.setPixmap(QtGui.QPixmap("wrng.png"))
+            elif self.rbutopB.isChecked()==True:
+                if self.crctans==self.options[1]:
+                    self.flag.insert(self.counter-1,'Correct')
+                else:
+                    self.flag.insert(self.counter-1,'Wrong')
+                    self.B_indicator.setPixmap(QtGui.QPixmap("wrng.png"))
+            elif self.rbutopC.isChecked()==True:
+                if self.crctans==self.options[2]:
+                    self.flag.insert(self.counter-1,'Correct')
+                else:
+                    self.flag.insert(self.counter-1,'Wrong')
+                    self.C_indicator.setPixmap(QtGui.QPixmap("wrng.png"))
+            elif self.rbutopD.isChecked()==True:
+                if self.crctans==self.options[3]:
+                    self.flag.insert(self.counter-1,'Correct')
+                else:
+                    self.flag.insert(self.counter-1,'Wrong')
+                    self.D_indicator.setPixmap(QtGui.QPixmap("wrng.png"))
+            else:#if nothing is checked
+                QtGui.QMessageBox.information(self.form, 'Message', "Select an option first!")
+                    
+            crrOp = self.options.index(self.crctans)
+            
+            if crrOp == 0:
+                self.A_indicator.setPixmap(QtGui.QPixmap("crr.png"))
+            elif crrOp == 1:
+                self.B_indicator.setPixmap(QtGui.QPixmap("crr.png"))
+            elif crrOp == 2:
+                self.C_indicator.setPixmap(QtGui.QPixmap("crr.png"))
+            elif crrOp == 3:
+                self.D_indicator.setPixmap(QtGui.QPixmap("crr.png"))
+            self.btn_next.setText(_translate("QuizWindow", "NEXT", None))
+                
+        elif self.btn_next.text() == "NEXT":
+            if self.counter<10:
+                self.A_indicator.setText(_translate("QuizWindow"," ",None))
+                self.B_indicator.setText(_translate("QuizWindow"," ",None))
+                self.C_indicator.setText(_translate("QuizWindow"," ",None))
+                self.D_indicator.setText(_translate("QuizWindow"," ",None))
+                self.btn_next.setText(_translate("QuizWindow", "SUBMIT", None))
+                self.disp()     #in2
+
+
+            else:
+                self.form.hide()
+                self.quizstatwin=QtGui.QWidget() #CALLING QUIZ STAT WINDOW 
+                self.ui=Ui_table2()
+                self.ui.setupUi(self.quizstatwin, self.flag,self.mw)#flag = list
+                self.quizstatwin.show()
+
+
+    def retranslateUi(self, QuizWindow):
+        QuizWindow.setWindowTitle(_translate("QuizWindow", "GRE Vocab Builder", None))
+        self.labheader.setText(_translate("QuizWindow", "GRE - Quiz", None))
+        self.bookmark_cb.setText(_translate("QuizWindow", "Bookmark", None))
+        self.btn_next.setText(_translate("QuizWindow", "SUBMIT", None))
+
+    def btnMMClicked(self):
+        self.mw.show()
+        self.form.hide()
+
+if __name__ == "__main__":
+    import sys
+    app = QtGui.QApplication(sys.argv)
+    QuizWindow = QtGui.QWidget()
+    ui = Ui_QuizWindow()
+    ui.setupUi(QuizWindow)
+    QuizWindow.show()
+    sys.exit(app.exec_())
+
