@@ -1,0 +1,24 @@
+Git Commands->>
+
+sudo apt-get install git
+
+git config --global user.name "user_name"
+
+git config --global user.email "email_id"
+
+#go to the folder which is to be added in repository->>
+git init
+
+#add all file by->>
+git add .
+
+git commit -m "some_message"
+
+git remote add origin https://github.com/gauravghongde/<repoName.git>
+
+git push origin master
+
+>>then provide useraname 
+>>put you password
+
+--------------------------------------------- DONE :)
