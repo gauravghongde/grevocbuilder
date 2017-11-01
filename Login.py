@@ -223,12 +223,12 @@ class Ui_LoginWindow(object):
             else:
                 self.lw.hide()
                 self.window=QtGui.QWidget() 
-            self.ui=Ui_SignupWindow()
-            self.ui.getUsername(str(self.txtUsername.text()))
-            self.ui.setupUi(self.window,1,self.lw)
-            self.txtPassword.setText("")
-            self.lw.hide()
-            self.window.show()
+                self.ui=Ui_SignupWindow()
+                self.ui.getUsername(str(self.txtUsername.text()))
+                self.ui.setupUi(self.window,1,self.lw)
+                self.txtPassword.setText("")
+                self.lw.hide()
+                self.window.show()
 
     def btnSignupClicked(self):
         self.lw.hide()

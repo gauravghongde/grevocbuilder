@@ -179,6 +179,7 @@ class Ui_QuizWindow(object):
         self.rbutopA.setStyleSheet(_fromUtf8("font: 14pt \"Ubuntu Condensed\";"))
         self.rbutopA.setCheckable(True)
         self.rbutopA.setChecked(False)
+        self.rbutopA.setAutoExclusive(False)
         self.rbutopA.setObjectName(_fromUtf8("rbutopA"))
         self.gridLayout.addWidget(self.rbutopA, 0, 2, 1, 1)
         spacerItem1 = QtGui.QSpacerItem(40, 20, QtGui.QSizePolicy.Expanding, QtGui.QSizePolicy.Minimum)
@@ -194,6 +195,7 @@ class Ui_QuizWindow(object):
         self.rbutopB.setCursor(QtGui.QCursor(QtCore.Qt.PointingHandCursor))
         self.rbutopB.setStyleSheet(_fromUtf8("font: 14pt \"Ubuntu Condensed\";"))
         self.rbutopB.setObjectName(_fromUtf8("rbutopB"))
+        self.rbutopB.setAutoExclusive(False)
         self.gridLayout.addWidget(self.rbutopB, 1, 2, 1, 1)
         spacerItem3 = QtGui.QSpacerItem(40, 20, QtGui.QSizePolicy.Expanding, QtGui.QSizePolicy.Minimum)
         self.gridLayout.addItem(spacerItem3, 1, 3, 1, 1)
@@ -208,6 +210,7 @@ class Ui_QuizWindow(object):
         self.rbutopC.setCursor(QtGui.QCursor(QtCore.Qt.PointingHandCursor))
         self.rbutopC.setStyleSheet(_fromUtf8("font: 14pt \"Ubuntu Condensed\";"))
         self.rbutopC.setObjectName(_fromUtf8("rbutopC"))
+        self.rbutopC.setAutoExclusive(False)
         self.gridLayout.addWidget(self.rbutopC, 2, 2, 1, 1)
         spacerItem5 = QtGui.QSpacerItem(40, 20, QtGui.QSizePolicy.Expanding, QtGui.QSizePolicy.Minimum)
         self.gridLayout.addItem(spacerItem5, 2, 3, 1, 1)
@@ -222,18 +225,44 @@ class Ui_QuizWindow(object):
         self.rbutopD.setCursor(QtGui.QCursor(QtCore.Qt.PointingHandCursor))
         self.rbutopD.setStyleSheet(_fromUtf8("font: 14pt \"Ubuntu Condensed\";"))
         self.rbutopD.setObjectName(_fromUtf8("rbutopD"))
+        self.rbutopD.setAutoExclusive(False)
         self.gridLayout.addWidget(self.rbutopD, 3, 2, 1, 1)
         spacerItem7 = QtGui.QSpacerItem(40, 20, QtGui.QSizePolicy.Expanding, QtGui.QSizePolicy.Minimum)
         self.gridLayout.addItem(spacerItem7, 3, 3, 1, 1)
 
         self.btn_next.clicked.connect(self.nextbtnckd)
         self.mainmenu_btn.clicked.connect(self.btnMMClicked)
+        self.rbutopA.clicked.connect(self.rdbtnAChecked)
+        self.rbutopB.clicked.connect(self.rdbtnBChecked)
+        self.rbutopC.clicked.connect(self.rdbtnCChecked)
+        self.rbutopD.clicked.connect(self.rdbtnDChecked)
+        
         self.disp()
 
         self.retranslateUi(QuizWindow)
         QtCore.QMetaObject.connectSlotsByName(QuizWindow)
-
         
+    def rdbtnAChecked(self):
+    	self.rbutopA.setChecked(True)
+    	self.rbutopB.setChecked(False)
+    	self.rbutopC.setChecked(False)
+    	self.rbutopD.setChecked(False)
+    def rdbtnBChecked(self):
+    	self.rbutopA.setChecked(False)
+    	self.rbutopB.setChecked(True)
+    	self.rbutopC.setChecked(False)
+    	self.rbutopD.setChecked(False)
+    def rdbtnCChecked(self):
+    	self.rbutopA.setChecked(False)
+    	self.rbutopB.setChecked(False)
+    	self.rbutopC.setChecked(True)
+    	self.rbutopD.setChecked(False)
+    def rdbtnDChecked(self):
+    	self.rbutopA.setChecked(False)
+    	self.rbutopB.setChecked(False)
+    	self.rbutopC.setChecked(False)
+    	self.rbutopD.setChecked(True)
+    	
     def nextbtnckd(self):
         #print(self.options)
         if self.btn_next.text() == "SUBMIT":
@@ -281,7 +310,14 @@ class Ui_QuizWindow(object):
             self.btn_next.setText(_translate("QuizWindow", "NEXT", None))
                 
         elif self.btn_next.text() == "NEXT":
+            #print("unset A")
+	    self.rbutopA.setChecked(False)
+	    self.rbutopB.setChecked(False)
+	    self.rbutopC.setChecked(False)
+	    self.rbutopD.setChecked(False)
+	    
             if self.counter<10:
+            	
                 self.A_indicator.setText(_translate("QuizWindow"," ",None))
                 self.B_indicator.setText(_translate("QuizWindow"," ",None))
                 self.C_indicator.setText(_translate("QuizWindow"," ",None))
@@ -290,11 +326,13 @@ class Ui_QuizWindow(object):
                 #Again UNCHECK it
                 
                 self.btn_next.setText(_translate("QuizWindow", "SUBMIT", None))
+                '''
                 self.rbutopA.setChecked(False)
                 print("unset A")
                 self.rbutopB.setChecked(False)
                 self.rbutopC.setChecked(False)
                 self.rbutopD.setChecked(False)
+                '''
 
                 self.disp()     #in2
 
