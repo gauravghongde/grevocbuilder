@@ -380,6 +380,7 @@ class Ui_QuizWindow(object):
 
             else:
                 self.form.hide()
+                self.timer.stop()
                 self.quizendwin=QtGui.QWidget()                             #CALLING QUIZ STAT WINDOW 
                 self.qendui=Ui_QuizResultWindow()                           
                 self.qendui.setupUi(self.quizendwin, self.flag, self.mw, self.username)    #flag = list
@@ -421,6 +422,7 @@ class Ui_QuizWindow(object):
         self.lblRemTime.setText(_translate("QuizWindow", "Remaining Time:", None))
         
     def btnMMClicked(self):
+        self.timer.stop()
         self.mw.show()
         self.form.hide()
 
