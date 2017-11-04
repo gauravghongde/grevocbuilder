@@ -9,7 +9,10 @@
 
 from PyQt4 import QtCore, QtGui
 from Quiz import Ui_QuizWindow
-#from wordlist import Ui_Wordlist
+from Wordlist import Ui_wordlistWin
+from Flcards import Ui_Flashcard
+from Favorites import Ui_FavWindow
+from Stats import Ui_StatsWindow
 
 try:
     _fromUtf8 = QtCore.QString.fromUtf8
@@ -26,9 +29,10 @@ except AttributeError:
         return QtGui.QApplication.translate(context, text, disambig)
 
 class Ui_MainMenuWindow(object):
-    def setupUi(self, MainMenuWindow):
+    def setupUi(self, MainMenuWindow,username):
 
-        self.mw = MainMenuWindow;
+        self.mw = MainMenuWindow
+        self.username = username
 
         MainMenuWindow.setObjectName(_fromUtf8("MainMenuWindow"))
         MainMenuWindow.resize(640, 480)
@@ -163,6 +167,9 @@ class Ui_MainMenuWindow(object):
 
         self.butwordlst.clicked.connect(self.btnWordlistClicked)
         self.butquiz.clicked.connect(self.btnquizClicked)
+        self.butfcards.clicked.connect(self.btnflCardClicked)
+        self.butfav.clicked.connect(self.btnfavClicked)
+        self.butstats.clicked.connect(self.btnstatsClicked)
 
         self.retranslateUi(MainMenuWindow)
         QtCore.QMetaObject.connectSlotsByName(MainMenuWindow)
@@ -171,16 +178,36 @@ class Ui_MainMenuWindow(object):
         self.mw.hide()
         self.quizwin = QtGui.QWidget()
         self.quizui = Ui_QuizWindow()
-        self.quizui.setupUi(self.quizwin,self.mw)
+        self.quizui.setupUi(self.quizwin,self.mw,self.username)
         self.quizwin.show() 
 
     def btnWordlistClicked(self):
         self.mw.hide()
-        self.quizwin = QtGui.QWidget()
-        self.quizui = Ui_Wordlist()
-        self.quizui.setupUi(self.quizwin,self.mw)
-        self.quizwin.show() 
+        self.wlwin = QtGui.QWidget()
+        self.wlui = Ui_wordlistWin()
+        self.wlui.setupUi(self.wlwin,self.mw)
+        self.wlwin.show()
 
+    def btnflCardClicked(self):
+        self.mw.hide()
+        self.flwin = QtGui.QWidget()
+        self.flui = Ui_Flashcard()
+        self.flui.setupUi(self.flwin,self.mw,self.username)
+        self.flwin.show()
+
+    def btnfavClicked(self):
+        self.mw.hide()
+        self.favwin = QtGui.QWidget()
+        self.favui = Ui_FavWindow()
+        self.favui.setupUi(self.favwin,self.mw,self.username)
+        self.favwin.show()
+
+    def btnstatsClicked(self):
+        self.mw.hide()
+        self.statswin = QtGui.QWidget()
+        self.statsui = Ui_StatsWindow()
+        self.statsui.setupUi(self.statswin,self.mw,self.username)
+        self.statswin.show()
 
     def retranslateUi(self, MainMenuWindow):
         MainMenuWindow.setWindowTitle(_translate("MainMenuWindow", "GRE Vocab Builder", None))

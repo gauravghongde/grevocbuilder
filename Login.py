@@ -255,7 +255,7 @@ class Ui_LoginWindow(object):
                 self.lw.hide()
                 self.MainWindow = QtGui.QMainWindow()
                 self.ui = Ui_MainMenuWindow()
-                self.ui.setupUi(self.MainWindow)
+                self.ui.setupUi(self.MainWindow,self.txtUsername.text())
                 self.MainWindow.show()
 
 

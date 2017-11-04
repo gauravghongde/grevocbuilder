@@ -234,22 +234,21 @@ class Ui_SignupWindow(object):
         else:
         
             if self.txtPassword.text() == self.txtConfPassword.text():
-                sql_stmt = "insert into users values(?,?);"
+                sql_stmt = "insert into users(username,password) values(?,?);"
                 try:
                     self.conn.execute(sql_stmt,(str(self.txtUsername.text()),str(self.txtPassword.text())))
                     self.conn.commit()
                     QtGui.QMessageBox.information(self.sw, 'Message', "Account Created Successfully!")
                     
-                    self.conn.execute("alter table allwords add "+str(self.txtUsername.text())+" TEXT DEFAULT NA;")
+                    self.conn.execute("alter table allwords add "+str(self.txtUsername.text())+" INTEGER DEFAULT 0;")
                     self.conn.commit()
 
-                    self.conn.execute("create table "+str(self.txtUsername.text())+" (Timestamp Date,QuizNo INT AUTO_INCREMENT,CorrectAnsCount INT,WrongAnsCount INT)")
+                    self.conn.execute("create table "+str(self.txtUsername.text())+" (Timestamp TEXT, QuizNo INTEGER PRIMARY KEY AUTOINCREMENT, CorrectAnsCount INTEGER, Badges TEXT)")
                     self.conn.commit()
 
                     self.sw.hide()
                     self.lw.show()
-                    
-                    
+
                 except sqlite3.IntegrityError:
                     QtGui.QMessageBox.information(self.sw, 'Message', "Username already exists!")
             else:

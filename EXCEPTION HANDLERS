@@ -1,0 +1,6 @@
+if database gets locked ->
+
+fuser gre.db
+
+kill -9 15002
+
