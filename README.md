@@ -1,3 +1,9 @@
-# grevocbuilder
-SDL TE mini-project
-![Output sample] https://j.gifs.com/MQBLyQ.gif
+using pyQT
+----------
+---------------------------------------------
+![](https://j.gifs.com/N91MlK.gif)
+
+--------------------------------------------
+
+![](https://j.gifs.com/MQBLyQ.gif)
+
